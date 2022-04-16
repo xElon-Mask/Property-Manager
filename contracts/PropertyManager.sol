@@ -10,4 +10,9 @@ contract Owner {
         owner = msg.sender;
     }
 
+    modifier isOwner() {
+        require(owner == msg.sender, "Not the Property Manager");
+        _;
+    }
+
 }
