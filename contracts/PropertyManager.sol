@@ -48,4 +48,8 @@ contract PropertyManager is Owner {
         return PropertiesOwned[_landlord].length;
     }
 
+    function getMyProperties() public view returns(property[] memory) {
+        return PropertiesOwned[msg.sender];
+    }
+
 }
