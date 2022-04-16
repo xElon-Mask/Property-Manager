@@ -40,4 +40,8 @@ contract PropertyManager is Owner {
         trackID++;
     }
 
+    function getProperty(address _landlord) public view isOwner returns(property[] memory) {
+        return PropertiesOwned[_landlord];
+    }
+
 }
