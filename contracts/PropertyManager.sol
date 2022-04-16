@@ -17,7 +17,7 @@ contract Owner {
 
 }
 
-contract PropertyManager {
+contract PropertyManager is Owner {
 
     enum typeProperty { field, apartment, house}
 
@@ -28,6 +28,16 @@ contract PropertyManager {
         typeProperty _typeProperty;
     }
 
+    uint trackID;
+
     mapping(address => property[]) PropertiesOwned;
+
+    function addProperty(address _landlord, string memory _name, uint _price, typeProperty _typeProperty) public isOwner {
+        require(_price > 5000, "The property must cost more than 5000 wei");
+        require(uint(_typeProperty) >= 0, "Only three choices avalaible : field : 0, apartement : 1, house: 2");
+        require(uint(_typeProperty) <= 2, "Only three choices avalaible : field : 0, apartement : 1, house: 2");
+        PropertiesOwned[_landlord].push(property(trackID, _name, _price, _typeProperty));
+        trackID++;
+    }
 
 }
