@@ -44,4 +44,8 @@ contract PropertyManager is Owner {
         return PropertiesOwned[_landlord];
     }
 
+    function getTotalProperties(address _landlord) public view isOwner returns(uint) {
+        return PropertiesOwned[_landlord].length;
+    }
+
 }
