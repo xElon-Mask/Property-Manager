@@ -16,3 +16,18 @@ contract Owner {
     }
 
 }
+
+contract PropertyManager {
+
+    enum typeProperty { field, apartment, house}
+
+    struct property {
+        uint id;
+        string name;
+        uint price;
+        typeProperty _typeProperty;
+    }
+
+    mapping(address => property[]) PropertiesOwned;
+
+}
