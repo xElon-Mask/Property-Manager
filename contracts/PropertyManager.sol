@@ -2,20 +2,8 @@
 
 pragma solidity 0.8.13;
 
-contract Owner {
+import "./Owner.sol";
 
-    address owner;
-
-    constructor() {
-        owner = msg.sender;
-    }
-
-    modifier isOwner() {
-        require(owner == msg.sender, "Not the Property Manager");
-        _;
-    }
-
-}
 
 contract PropertyManager is Owner {
 
